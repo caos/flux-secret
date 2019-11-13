@@ -43,8 +43,31 @@ we use flux as it is with the addition of manifests.
 
  1. create a gopass remote store in git and store
 	 * flux ssh-keys (needed to checkout applications repository)
-	 * flux gpg-keys (needed to authenticate against gopass on the application repository [see below])
-	 * create a repository for your applications secrets and permission the above gpg key  via gopass to access the secrets
+	 * flux gpg-keys (needed to authenticate against gopass on the application repository)
+	 * it should then look something like this:
+```
+gopass show $YOURSTORE/technical/k8s/$CLUSTERNAME/flux/
+
+$YOURSTORE/technical/k8s/$CLUSTERNAME/flux/
+├── gpg-private-key
+├── gpg-public-key
+├── ssh-private-key
+└── ssh-public-key
+```
+
+  2. create a gopass remote store for your application(s) and permission the above gpg key
+     * it should then look something like this:
+```
+gopass show $APPLICATIONSTORE/application/$APPLICATIONNAME/
+$APPLICATIONSTORE/application/$APPLICATIONNAME/
+├── prod
+│   └── applicationsecrets
+└── test
+    └── applicationsecrets
+```
+
+
+
 
  2. replace variables in script
      `k8s/overlay/1_flux-gpg-key.yaml-template.sh`

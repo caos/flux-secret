@@ -88,11 +88,10 @@ FLUX_SSH_PRIV_KEY=$(gopass $YOURSTORE/technical/k8s/$CLUSTERNAME/flux//ssh-priva
 
 this script will create a secret for flux with it's own keys and we will execute it later. 
 
- 4. 
-  Now that we do have (flux's) keys and permissioned a key to checkout and decrypt a secrets repository,
-  we need to tell flux where it will find the application secrets and the manifests  
+ 4. Now that we do have (flux's) keys and permissioned a key to checkout and decrypt a secrets repository,
+    we need to tell flux where it will find the application secrets and the manifests  
 
-  Note: The application repository can be a complete different repository as it does not have secrets in it! It is the GitOps Repository that holds the declarative description of your application
+    Note: The application repository can be a complete different repository as it does not have secrets in it! It is the GitOps Repository that holds the declarative description of your application
 
 e.g.:
 

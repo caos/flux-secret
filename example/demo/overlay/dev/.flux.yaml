@@ -1,0 +1,5 @@
+version: 1
+commandUpdated:
+  generators:
+    - command: kustomize build .
+    - command: ./secrets.yaml.sh

@@ -44,9 +44,9 @@ we use flux as it is with the addition of manifests.
 ## installation and usage of flux-secret
  
  1. create a gopass remote store in git and store 
-		 1. flux ssh-keys (needed to checkout applications repository)
-		 2. flux gpg-keys (needed to authenticate against gopass on the application repository [see below])
-		 3. create a repository for your applications secrets and permission the above gpg key  via gopass to access the secrets 
+		 - flux ssh-keys (needed to checkout applications repository)
+		 - flux gpg-keys (needed to authenticate against gopass on the application repository [see below])
+		 - create a repository for your applications secrets and permission the above gpg key  via gopass to access the secrets 
  2. replace variables in script 
      `k8s/overlay/1_flux-gpg-key.yaml-template.sh`
      

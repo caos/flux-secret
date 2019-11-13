@@ -64,6 +64,15 @@ $APPLICATIONSTORE/application/$APPLICATIONNAME/
 │   └── applicationsecrets
 └── test
     └── applicationsecrets
+
+
+gopass recipients list $APPLICATIONSTORE
+├── $APPLICATIONSTORE (/Users/itsme/.password-store-$APPLICATIONSTORE)
+    ├── 0x06C56F5AA61FF0C1 - devops person1 <devops1@yourdomain.ch>
+    ├── 0x06C56F5AA61FF0C1 - devops person2 <devops2@yourdomain.ch>
+    └── 0xF3169268DD2D3BB9 - flux-operator <yourfluxemail@yourdomain.com>
+
+
 ```
 
 

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flux
+  namespace: flux
+spec:
+  template:
+    spec:
+      volumes:
+      - name: git-key
+        secret:
+          secretName: flux-ssh-config
+          defaultMode: 0400
+      - name: gopass-init
+        configMap:
+          name: gopass-init
+          defaultMode: 0777
+      - name: gpg-keys
+        secret:
+          secretName: flux-gpg-keys
+          defaultMode: 0400
+      containers:
+      - name: flux
+        # we want to initialize gpg and gopass when the container started 
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/bash", "-c", "/home/flux/initialize_gopass.sh git@github.com:<YOURORGANIZATION>/<YOURSECRETSTORE> <YOURSECRETSTORE>"]
+        volumeMounts:
+        - name: git-key
+          mountPath: /etc/fluxd/ssh
+          readOnly: true
+        - name: gopass-init
+          mountPath: /home/flux/initialize_gopass.sh
+          subPath: initialize_gopass.sh
+        - name: gpg-keys
+          mountPath: /root/gpg-import
+          readOnly: true
+        args:
+        - --memcached-service=
+        - --ssh-keygen-dir=/var/fluxd/keygen
+        - --git-url=git@github.com:<YOURORGANIZATION>/<YOUROPSREPOSITORY>
+        - --git-branch=master
+        - --git-path=<PATHTOAPPLICATIONS>
+        - --git-label=flux
+        - --git-user=<YOURGHUSER>
+        - --git-email=<YOURGHEMAIL>
+        - --manifest-generation=true
+        - --listen-metrics=:3031

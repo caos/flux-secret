@@ -26,7 +26,7 @@ so we thought,.. why not combine 2 excellent tools in an easy manner?
 
 keep things simple !
 
-we use flux as it is with the addition of [manifests](https://docs.fluxcd.io/en/stable/references/fluxyaml-config-files.html).
+we use flux as it is, with the addition of [manifests](https://docs.fluxcd.io/en/stable/references/fluxyaml-config-files.html).
 
  * Manifest generators expect a valid yaml out of any command, collects them and once the yamls are valid, pushes them to your k8s cluster.
  * In addition we wrote a little helper that initializes gpg and a gopass store to get gopass up and running with the right permissions.

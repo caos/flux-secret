@@ -17,11 +17,9 @@ so we thought,.. why not combine 2 excellent tools in an easy manner?
 
 ## the goal
 
-simple:
-
- - An Kubernetes application shall get its secrets automatically. The secrets shall not be in cleartext ANYwhere. 
- - The interaction of secrets shall be as simple as possible for the Administrator AND for the application.
- - Secrets do have one or multiple owners that share responsibilities
+ * An Kubernetes application shall get its secrets automatically. The secrets shall not be in cleartext ANYwhere. 
+ * The interaction of secrets shall be as simple as possible for the Administrator AND for the application.
+ * Secrets do have one or multiple owners that share responsibilities
 
 ## the solution
 
@@ -29,9 +27,9 @@ keep things simple !
 
 we use flux as it is with the addition of manifests.
 
- - Manifest generators expect a valid yaml out of any command, collects them and once the yamls are valid, pushes them to your k8s cluster.
- - In addition we wrote a little helper that initializes gpg and a gopass store to get gopass up and running with the right permissions.
- - to keep things more managable, we use  [kustomize](https://github.com/kubernetes-sigs/kustomize)  to combine the "stock" flux implementation with our changes.
+ * Manifest generators expect a valid yaml out of any command, collects them and once the yamls are valid, pushes them to your k8s cluster.
+ * In addition we wrote a little helper that initializes gpg and a gopass store to get gopass up and running with the right permissions.
+ * to keep things more managable, we use  [kustomize](https://github.com/kubernetes-sigs/kustomize)  to combine the "stock" flux implementation with our changes.
 
 ## requirements
 
@@ -52,10 +50,12 @@ we use flux as it is with the addition of manifests.
      `k8s/overlay/1_flux-gpg-key.yaml-template.sh`
      
       and let it know where it can find flux's sshkey and gpg key:
-      
-      ```# flux gpg key secrets
-       FLUX_GPG_KEY=$(gopass <PATH_TO_SECRET>/gpg-private-key )
-	   FLUX_SSH_PRIV_KEY=$(gopass <PATH_TO_SECRET>/ssh-private-key )```
+
+```
+# flux gpg key secrets
+FLUX_GPG_KEY=$(gopass <PATH_TO_SECRET>/gpg-private-key )
+FLUX_SSH_PRIV_KEY=$(gopass <PATH_TO_SECRET>/ssh-private-key )
+```
 
 
 

@@ -29,33 +29,33 @@ keep things simple !
 
 we use flux as it is with the addition of manifests.
 
- - Manifest generators expect a valid yaml out of any command, collects them and once the yamls are valid, pushes them to your k8s cluster. 
+ - Manifest generators expect a valid yaml out of any command, collects them and once the yamls are valid, pushes them to your k8s cluster.
  - In addition we wrote a little helper that initializes gpg and a gopass store to get gopass up and running with the right permissions.
  - to keep things more managable, we use  [kustomize](https://github.com/kubernetes-sigs/kustomize)  to combine the "stock" flux implementation with our changes.
 
 ## requirements
 
  1. local requirements (what devops people need)
-	 - [gopass](https://github.com/gopasspw/gopass)
-	 - [fluxctl](https://docs.fluxcd.io/en/stable/references/fluxctl.html)
-	 - [kustomize](https://github.com/kubernetes-sigs/kustomize)
-	 - one ore more git repositories to store keys/secrets (depending on your needs)
- 
-## installation and usage of flux-secret
- 
- 1. create a gopass remote store in git and store 
-	 - flux ssh-keys (needed to checkout applications repository)
-	 - flux gpg-keys (needed to authenticate against gopass on the application repository [see below])
-	 - create a repository for your applications secrets and permission the above gpg key  via gopass to access the secrets 
+	 * [gopass](https://github.com/gopasspw/gopass)
+	 * [fluxctl](https://docs.fluxcd.io/en/stable/references/fluxctl.html)
+	 * [kustomize](https://github.com/kubernetes-sigs/kustomize)
+	 * one ore more git repositories to store keys/secrets (depending on your needs)
 
- 2. replace variables in script 
+## installation and usage of flux-secret
+
+ 1. create a gopass remote store in git and store
+	 * flux ssh-keys (needed to checkout applications repository)
+	 * flux gpg-keys (needed to authenticate against gopass on the application repository [see below])
+	 * create a repository for your applications secrets and permission the above gpg key  via gopass to access the secrets
+
+ 2. replace variables in script
      `k8s/overlay/1_flux-gpg-key.yaml-template.sh`
      
       and let it know where it can find flux's sshkey and gpg key:
       
-      `# flux gpg key secrets`
-      `FLUX_GPG_KEY=$(gopass <PATH_TO_SECRET>/gpg-private-key )`
-	`FLUX_SSH_PRIV_KEY=$(gopass <PATH_TO_SECRET>/ssh-private-key )`
+      ```# flux gpg key secrets
+       FLUX_GPG_KEY=$(gopass <PATH_TO_SECRET>/gpg-private-key )
+	   FLUX_SSH_PRIV_KEY=$(gopass <PATH_TO_SECRET>/ssh-private-key )```
 
 
 

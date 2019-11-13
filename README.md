@@ -18,8 +18,9 @@ so we thought,.. why not combine 2 excellent tools in an easy manner?
 ## the goal
 
  * An Kubernetes application shall get its secrets automatically. The secrets shall not be in cleartext ANYwhere. 
- * The interaction of secrets shall be as simple as possible for the Administrator AND for the application.
- * Secrets do have one or multiple owners that share responsibilities
+ * The interaction with secrets shall be as simple as possible for the administrator AND for the application.
+ * Secrets do have one or multiple owners that share responsibilities over the sensible data
+ * each interaction with secrets is documented and trackable
 
 ## the solution
 

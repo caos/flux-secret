@@ -222,3 +222,6 @@ It might seem a bit complicated at first,.. but we are talking about gitpos, gpg
 There are some moving targets, but that`s the way gpg works.
 
 As the secrets (getter) script get's executed everytime a change has been made in the applications repository, all you have to do is to amend the gopass entry, the secrets will be delivered on every deployment without any user interaction.
+
+
+![flux-secrets-workflow](images/flux-secrets-workflow.png?raw=true "flux-secrets-workflow")

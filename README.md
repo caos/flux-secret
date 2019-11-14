@@ -38,6 +38,9 @@ We use flux as it is, with the addition of [manifests](https://docs.fluxcd.io/en
 * In addition we wrote a little helper that initializes gpg and a gopass store to get gopass up and running with the right permissions
 * To keep things more managable, we use  [kustomize](https://github.com/kubernetes-sigs/kustomize)  to combine the "stock" flux implementation with our changes
 
+![flux-secrets-workflow](images/flux-secrets-workflow.png?raw=true "flux-secrets-workflow")
+
+
 ## Requirements
 
 1. Local requirements (what devops people need)
@@ -223,5 +226,3 @@ There are some moving targets, but that`s the way gpg works.
 
 As the secrets (getter) script get's executed everytime a change has been made in the applications repository, all you have to do is to amend the gopass entry, the secrets will be delivered on every deployment without any user interaction.
 
-
-![flux-secrets-workflow](images/flux-secrets-workflow.png?raw=true "flux-secrets-workflow")

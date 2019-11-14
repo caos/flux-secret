@@ -4,7 +4,7 @@ Weave flux addon to use gpg/gopass for secrets in kubernetes.
 
 ## Purpose / Usecase
 
-We @[caos](https://caos.ch) love opensource and realy like the [GitOps](https://www.weave.works/technologies/gitops/) pattern, introduced by [weaveworks](https://www.weave.works/).
+We @[caos](https://caos.ch) love opensource and really like the [GitOps](https://www.weave.works/technologies/gitops/) pattern, introduced by [weaveworks](https://www.weave.works/).
 
 [Flux](https://github.com/fluxcd/flux) by weaveworks is a fantastic tool to reconcile software on kubernetes clusters automatically.
 

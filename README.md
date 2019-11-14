@@ -8,25 +8,25 @@ We @[caos](https://caos.ch) love opensource and realy like the [GitOps](https://
 
 [Flux](https://github.com/fluxcd/flux) by weaveworks is a fantastic tool to reconcile software on kubernetes clusters automatically.
 
-Once you start managing more than 1 cluster with more than just a handful application(s) you might find yourself in the need to manage your secrets and/or sensitive data in an easy way without human interaction.
+Once you start managing more than one cluster with more than just a handful applications you might find yourself in the need to manage your secrets and/or sensitive data in an easy way without any human interaction.
 
-There are plenty of solutions out there to manage secure data, one of the most famous might be [Vault](https://www.vaultproject.io/) by hashicorp or [sealed-secrets](https://github.com/bitnami-labs/sealed-secrets) by bitnami. Both do their job very well, but sometimes you don't wan't to use another product / service with your usecase.
+There are plenty of solutions out there to manage secure data, one of the most famous might be [Vault](https://www.vaultproject.io/) by hashicorp or [sealed-secrets](https://github.com/bitnami-labs/sealed-secrets) by bitnami. Both do their job very well, but sometimes you don't wan't to use another product / service with your use case.
 
-This is were [gopass](https://github.com/gopasspw/gopass) comes into play. Gopass is a nice opensource Go based rewrite of good old unix pass, combined with git to store secrets remotely. We already used it for our own secrets quite a while.
+This is were [gopass](https://github.com/gopasspw/gopass) comes into play. Gopass is an opensource project written in Go which rewrites the good old password manager "pass", combined with git to store the managed secrets remotely. We are already using it for our own secrets for quite a while and are super happy with its functionality.
 
 So, we thought,.. why not combine 2 excellent tools in an easy manner?
 
 ## The goal(s)
 
 * An Kubernetes application shall get its secrets automatically. The secrets shall not be in cleartext ANYwhere
-* The interaction with secrets shall be as simple as possible for the administrator AND for the application
-* Secrets do have one or multiple owners that share responsibilities over the sensitive data
-* Each interaction with secrets is documented and trackable (auditable)
+* The interaction with secrets shall be as simple as possible for the administrator/developer AND for the application
+* Secrets shall have one or multiple owners that share responsibilities over the sensitive data
+* Each interaction with secrets shall be documented and trackable (auditable)
 
 ## The NO goal(s)
 
-* Reinvent the wheel
-* Create own crypto
+* The wheel shall not be reinvented
+* Everyone shall create their own crypto
 
 ## The solution
 
@@ -34,8 +34,8 @@ Keep things simple !
 
 We use flux as it is, with the addition of [manifests](https://docs.fluxcd.io/en/stable/references/fluxyaml-config-files.html).
 
-* Manifest generators expect a valid yaml out of any command, collects them and once the yamls are valid, pushes them to your k8s cluster(s)
-* In addition we wrote a little helper that initializes gpg and a gopass store to get gopass up and running with the right permissions
+* Manifest generators expect a valid yaml out of any command, collects them and once every yaml is validated, pushes them to your kubernetes cluster(s)
+* In addition to the generators we wrote a little helper that initializes gpg and a gopass store to get gopass up and running with the right permissions
 * To keep things more managable, we use  [kustomize](https://github.com/kubernetes-sigs/kustomize)  to combine the "stock" flux implementation with our changes
 
 ![flux-secrets-workflow](images/flux-secrets-workflow.png?raw=true "flux-secrets-workflow")

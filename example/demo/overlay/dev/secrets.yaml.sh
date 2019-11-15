@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script for initial secret and key declaration for kube-seal server
+# Script for initial secret and key declaration for k8s
 set -e
 #[[ `uname` = "Linux" ]] && ENCODE="base64 --wrap=0" || ENCODE="base64"
 
